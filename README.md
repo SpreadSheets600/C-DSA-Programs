@@ -6,7 +6,7 @@
 
 ## Notes
 
-- [Linear Search](./24-07-2025/LinearSearch.md)
+- [Linear Search](./Notes/LinearSearch.md)
 
 ## Resouces
 
