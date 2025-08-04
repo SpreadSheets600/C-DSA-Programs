@@ -3,9 +3,11 @@
 ## Contents
 
 - [July 24 - 2025 Programs](./24-07-2025/README.md)
+- [August 08 - 2025 Programs](./04-08-2025/README.md)
 
 ## Notes
 
+- [Stack](./Notes/Stack.md)
 - [Linear Search](./Notes/LinearSearch.md)
 
 ## Resouces
