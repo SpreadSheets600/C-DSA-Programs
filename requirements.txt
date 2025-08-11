@@ -1,0 +1,6 @@
+mkdocs-material
+mkdocs-jupyter
+mkdocs-awesome-pages-plugin
+mkdocs-simple-blog
+mkdocs-gitbook
+mkdocs-windmill
