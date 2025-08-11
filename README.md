@@ -9,10 +9,11 @@
 
 - [Stack](./Notes/Stack.md)
 - [Linear Search](./Notes/LinearSearch.md)
+- [Asymptotic Notation](./Notes/AsymptoticNotation.md)
 
 ## Resouces
 
-Soooooon ..... Maybe ?!
+- [Asymptotic Notation](https://www.youtube.com/watch?v=XMUe3zFhM5c)
 
 ## How to Use
 
