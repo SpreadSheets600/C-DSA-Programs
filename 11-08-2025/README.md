@@ -3,10 +3,15 @@
 ## Exercise 1 : String Operations
 
 **Qestion:** Write a single program in c with menu facility to perform the following string operations :
+
                 1. String Length
+                
                 2. String Reverse
+                
                 3. String Concatenation
+                
                 4. String Compare
+                
                 5. Search A Character Within A String
 
 **Sollution:** [View Code](StringOperations.cpp)
