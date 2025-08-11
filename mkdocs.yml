@@ -1,0 +1,56 @@
+site_name: C DSA Programs
+docs_dir: .github/docs
+theme:
+  name: material
+  palette:
+  - scheme: default
+    primary: indigo
+    accent: pink
+    toggle:
+      icon: material/weather-night
+      name: Switch to dark mode
+  - scheme: slate
+    primary: indigo
+    accent: pink
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to light mode
+  features:
+  - navigation.instant
+  - navigation.expand
+  - navigation.sections
+  - navigation.path
+  - navigation.prune
+  - search.highlight
+  - search.suggest
+  - content.code.copy
+markdown_extensions:
+- admonition
+- codehilite
+- footnotes
+- tables
+- toc
+- pymdownx.highlight:
+    anchor_linenums: true
+    linenums: true
+    linenums_style: table
+    use_pygments: true
+- pymdownx.superfences
+plugins:
+- search
+- mkdocs-jupyter
+repo_url: https://github.com/SpreadSheets600/c-dsa-programs
+repo_name: C-DSA-Programs
+nav:
+- Home:
+  - Home: README.md
+- 04-08-2025:
+  - 04-08-2025: 04-08-2025/README.md
+- 11-08-2025:
+  - 11-08-2025: 11-08-2025/README.md
+- 24-07-2025:
+  - 24-07-2025: 24-07-2025/README.md
+- Notes:
+  - AsymptoticNotation: Notes/AsymptoticNotation.md
+  - LinearSearch: Notes/LinearSearch.md
+  - Stack: Notes/Stack.md
