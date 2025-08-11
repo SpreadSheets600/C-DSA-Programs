@@ -72,6 +72,8 @@ dkms.conf
 # Compiled Static libraries
 *.lai
 
+.vscode
+
 # Executables
 
 # End of https://www.toptal.com/developers/gitignore/api/c,c++
