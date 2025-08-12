@@ -27,158 +27,145 @@ ALLOWED_EXT = (
 )
 
 CODE_WRAP_EXTS = (".cpp", ".c", ".h", ".hpp", ".py")
-IGNORE_FILES = {
-    "generateDocs.py",
-    "generateREADME.py",
-}
+IGNORE_FILES = {"generateDocs.py", "generateREADME.py"}
 
 
 def wrap_code_as_md(src_path, dest_path):
     lang = pathlib.Path(src_path).suffix.lstrip(".")
-    with open(src_path, "r", encoding="utf-8", errors="ignore") as src, open(
+    with open(src_path, encoding="utf-8", errors="ignore") as src, open(
         dest_path, "w", encoding="utf-8"
     ) as md:
-        md.write(f"# {os.path.basename(src_path)}\n\n")
-        md.write(f"```{lang}\n")
+        md.write(f"# {os.path.basename(src_path)}\n\n```{lang}\n")
         md.write(src.read())
-        md.write("\n```")
+        md.write("\n```\n")
 
 
 def copy_docs():
     if os.path.exists(DOCS_DIR):
         shutil.rmtree(DOCS_DIR)
+    os.makedirs(DOCS_DIR, exist_ok=True)
 
-    os.makedirs(DOCS_DIR)
+    skip_dirs = {DOCS_DIR, ".git", ".github", ".vscode", "site", OVERRIDES_DIR}
 
     for root, _, files in os.walk(SOURCE_DIR):
-        if any(
-            skip in root
-            for skip in [DOCS_DIR, ".git", ".github", ".vscode", "site", OVERRIDES_DIR]
-        ):
+        if any(skip in root for skip in skip_dirs):
             continue
 
         rel_path = os.path.relpath(root, SOURCE_DIR)
         dest_path = os.path.join(DOCS_DIR, rel_path)
         os.makedirs(dest_path, exist_ok=True)
 
-        folder_name = os.path.basename(root) if rel_path != "." else "Home"
-        folder_name_clean = folder_name.replace(" ", "_")
-
         for file in files:
             if file in IGNORE_FILES:
                 continue
 
-            src_file = os.path.join(root, file)
-            filename_lower = file.lower()
+            file_lower = file.lower()
+            if file_lower.endswith(ALLOWED_EXT):
+                src_file = os.path.join(root, file)
+                shutil.copy2(src_file, os.path.join(dest_path, file))
 
-            if file.lower().endswith(ALLOWED_EXT):
-                if filename_lower == "readme.md":
-                    shutil.copy2(src_file, os.path.join(dest_path, "README.md"))
-                else:
-                    shutil.copy2(src_file, os.path.join(dest_path, file))
-
-                if (
-                    file.lower().endswith(CODE_WRAP_EXTS)
-                    and filename_lower != "readme.md"
-                ):
+                if file_lower.endswith(CODE_WRAP_EXTS):
                     md_name = os.path.splitext(file)[0] + ".md"
                     wrap_code_as_md(src_file, os.path.join(dest_path, md_name))
+
 
 def ensure_custom_css():
     os.makedirs(ASSETS_DIR, exist_ok=True)
 
     if not os.path.exists(CUSTOM_CSS):
-        with open(CUSTOM_CSS, "w", encoding="utf-8") as f:
-            f.write(
-                """
-    .md-main__inner {
-        max-width: 2000px;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
+        css_content = """
+.md-main__inner {
+    max-width: 2000px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 
-    .md-content {
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
-        border-left: 1px solid rgb(64, 81, 181, 0.5) !important;
-        border-right: 1px solid rgba(64, 82, 181, 0.5) !important;
-    }
+.md-content {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    border-left: 1px solid rgba(64, 81, 181, 0.5) !important;
+    border-right: 1px solid rgba(64, 82, 181, 0.5) !important;
+}
 """
-            )
+        with open(CUSTOM_CSS, "w", encoding="utf-8") as f:
+            f.write(css_content)
 
 
 def ensure_mkdocs_extra_css():
     if not os.path.exists(MKDOCS_FILE):
-        print(f"⚠ {MKDOCS_FILE} Not Found! 404")
+        print(f"⚠ {MKDOCS_FILE} Not Found!")
         return
 
-    with open(MKDOCS_FILE, "r", encoding="utf-8") as f:
-        config = yaml.safe_load(f)
+    with open(MKDOCS_FILE, encoding="utf-8") as f:
+        config = yaml.safe_load(f) or {}
 
     extra_css_list = config.get("extra_css", [])
 
-    if f"assets/{os.path.basename(CUSTOM_CSS)}" not in extra_css_list:
-        extra_css_list.append(f"assets/{os.path.basename(CUSTOM_CSS)}")
+    css_path = f"assets/{os.path.basename(CUSTOM_CSS)}"
+    if css_path not in extra_css_list:
+        extra_css_list.append(css_path)
         config["extra_css"] = extra_css_list
 
         with open(MKDOCS_FILE, "w", encoding="utf-8") as f:
             yaml.dump(config, f, sort_keys=False)
 
-        print(f"✅ Added {CUSTOM_CSS} TO {MKDOCS_FILE}")
+        print(f"✅ Added {css_path} to {MKDOCS_FILE}")
 
 
 def scan_dir(base_dir):
-    nav_entries = {}
-    md_exts = (".md",)
+    md_ext = (".md", ".ipynb")
 
-    for root, dirs, files in os.walk(base_dir):
-        dirs.sort()
-        files.sort()
+    def scan_folder(path):
+        entries = list(os.scandir(path))
+        dirs = sorted([e for e in entries if e.is_dir()], key=lambda d: d.name.lower())
+        files = sorted(
+            [e for e in entries if e.is_file()], key=lambda f: f.name.lower()
+        )
 
-        md_files = [f for f in files if f.lower().endswith(md_exts)]
-        if not md_files:
-            continue
+        md_files = [f.name for f in files if f.name.lower().endswith(md_ext)]
 
-        rel_dir = os.path.relpath(root, base_dir)
-        section_name = os.path.basename(root) if rel_dir != "." else "Home"
+        if not md_files and not dirs:
+            return []
 
-        if rel_dir == ".":
-            parent_name = "."
-        else:
-            parent_name = os.path.basename(os.path.dirname(root))
-            if parent_name == os.path.basename(base_dir):
-                parent_name = "."
+        section_title = (
+            os.path.basename(path)
+            if os.path.abspath(path) != os.path.abspath(base_dir)
+            else "Home"
+        )
 
         pages = []
 
         if "README.md" in md_files:
-            readme_path = (
-                os.path.join(rel_dir, "README.md") if rel_dir != "." else "README.md"
+            pages.append(
+                {
+                    section_title: os.path.relpath(
+                        os.path.join(path, "README.md"), base_dir
+                    )
+                }
             )
-            pages.append({section_name: readme_path})
-            for f in sorted(md_files):
-                if f == "README.md":
-                    continue
-                title = os.path.splitext(f)[0].replace("-", " ")
-                pages.append({title: os.path.join(rel_dir, f)})
-        else:
-            for f in sorted(md_files):
-                title = os.path.splitext(f)[0].replace("-", " ")
-                pages.append({title: os.path.join(rel_dir, f)})
 
-        if parent_name != ".":
-            nav_entries.setdefault(parent_name, []).append({section_name: pages})
-        else:
-            nav_entries.setdefault(section_name, pages)
+        for f in md_files:
+            if f.lower() == "readme.md":
+                continue
+            title = os.path.splitext(f)[0].replace("-", " ")
+            pages.append({title: os.path.relpath(os.path.join(path, f), base_dir)})
 
-    final_nav = [{key: value} for key, value in nav_entries.items()]
-    return final_nav
+        for d in dirs:
+            subnav = scan_folder(d.path)
+            if subnav:
+                pages.append({d.name: subnav})
 
+        if os.path.abspath(path) == os.path.abspath(base_dir):
+            return pages
+
+        return pages
+
+    return scan_folder(base_dir)
 
 def build_mkdocs(nav_entries):
     return {
         "site_name": "C DSA Programs",
-        "docs_dir": ".github/docs",
+        "docs_dir": DOCS_DIR,
         "theme": {
             "name": "material",
             "palette": [
@@ -241,6 +228,7 @@ def build_mkdocs(nav_entries):
         "nav": nav_entries,
     }
 
+
 if __name__ == "__main__":
     copy_docs()
     ensure_custom_css()
@@ -249,7 +237,7 @@ if __name__ == "__main__":
     nav = scan_dir(DOCS_DIR)
     config = build_mkdocs(nav)
 
-    with open("mkdocs.yml", "w") as f:
+    with open(MKDOCS_FILE, "w", encoding="utf-8") as f:
         yaml.dump(config, f, sort_keys=False)
 
     print("✅ MkDocs configuration generated successfully with custom CSS support!")

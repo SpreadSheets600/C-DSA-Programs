@@ -40,16 +40,17 @@ extra_css:
 - assets/extra.css
 plugins:
 - search
-- mkdocs-jupyter
 - offline
 - tags
+- table-reader
+- mkdocs-jupyter:
+    include:
+    - '*.ipynb'
 repo_url: https://github.com/SpreadSheets600/C-DSA-Programs
 repo_name: C-DSA-Programs
 nav:
-- Home:
-  - Home: README.md
-  - LinkedList: ./LinkedList.md
-  - requirements: ./requirements.md
+- Home: ./README.md
+- LinkedList: ./LinkedList.md
 - 04-08-2025:
   - 04-08-2025: 04-08-2025/README.md
   - GlobalStack: 04-08-2025/GlobalStack.md
