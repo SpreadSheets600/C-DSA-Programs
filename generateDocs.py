@@ -26,6 +26,12 @@ ALLOWED_EXT = (
     ".css",
 )
 
+CODE_WRAP_EXTS = (".cpp", ".c", ".h", ".hpp", ".py")
+IGNORE_FILES = {
+    "generateDocs.py",
+    "generateREADME.py",
+}
+
 
 def wrap_code_as_md(src_path, dest_path):
     lang = pathlib.Path(src_path).suffix.lstrip(".")
@@ -47,7 +53,7 @@ def copy_docs():
     for root, _, files in os.walk(SOURCE_DIR):
         if any(
             skip in root
-            for skip in [DOCS_DIR, ".git", ".github", "site", ".vscode", OVERRIDES_DIR]
+            for skip in [DOCS_DIR, ".git", ".github", ".vscode", "site", OVERRIDES_DIR]
         ):
             continue
 
@@ -55,16 +61,28 @@ def copy_docs():
         dest_path = os.path.join(DOCS_DIR, rel_path)
         os.makedirs(dest_path, exist_ok=True)
 
+        folder_name = os.path.basename(root) if rel_path != "." else "Home"
+        folder_name_clean = folder_name.replace(" ", "_")
+
         for file in files:
+            if file in IGNORE_FILES:
+                continue
+
             src_file = os.path.join(root, file)
+            filename_lower = file.lower()
 
             if file.lower().endswith(ALLOWED_EXT):
-                shutil.copy2(src_file, os.path.join(dest_path, file))
+                if filename_lower == "readme.md":
+                    shutil.copy2(src_file, os.path.join(dest_path, "README.md"))
+                else:
+                    shutil.copy2(src_file, os.path.join(dest_path, file))
 
-                if file.lower().endswith((".cpp", ".c", ".h", ".hpp", ".txt")):
+                if (
+                    file.lower().endswith(CODE_WRAP_EXTS)
+                    and filename_lower != "readme.md"
+                ):
                     md_name = os.path.splitext(file)[0] + ".md"
                     wrap_code_as_md(src_file, os.path.join(dest_path, md_name))
-
 
 def ensure_custom_css():
     os.makedirs(ASSETS_DIR, exist_ok=True)
@@ -211,12 +229,17 @@ def build_mkdocs(nav_entries):
             "pymdownx.superfences",
         ],
         "extra_css": [f"assets/{os.path.basename(CUSTOM_CSS)}"],
-        "plugins": ["search", "mkdocs-jupyter", "offline", "tags"],
+        "plugins": [
+            "search",
+            "offline",
+            "tags",
+            "table-reader",
+            {"mkdocs-jupyter": {"include": ["*.ipynb"]}},
+        ],
         "repo_url": "https://github.com/SpreadSheets600/C-DSA-Programs",
         "repo_name": "C-DSA-Programs",
         "nav": nav_entries,
     }
-
 
 if __name__ == "__main__":
     copy_docs()
