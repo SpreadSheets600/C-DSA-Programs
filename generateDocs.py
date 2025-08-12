@@ -53,12 +53,16 @@ def scan_dir(base_dir):
 
         rel_dir = os.path.relpath(root, base_dir)
         section_name = os.path.basename(root) if rel_dir != "." else "Home"
-        parent_name = os.path.basename(os.path.dirname(root))
+
+        if rel_dir == ".":
+            parent_name = "."
+        else:
+            parent_name = os.path.basename(os.path.dirname(root))
+            if parent_name == os.path.basename(base_dir):
+                parent_name = "."
 
         if "README.md" in md_files:
-            readme_path = (
-                os.path.join(rel_dir, "README.md") if rel_dir != "." else "README.md"
-            )
+            readme_path = os.path.join(rel_dir, "README.md") if rel_dir != "." else "README.md"
             pages = [{section_name: readme_path}]
             for f in md_files:
                 if f == "README.md":
@@ -80,8 +84,8 @@ def scan_dir(base_dir):
     return final_nav
 
 
+
 def build_mkdocs(nav_entries):
-    """Build MkDocs configuration."""
     return {
         "site_name": "C DSA Programs",
         "docs_dir": ".github/docs",
