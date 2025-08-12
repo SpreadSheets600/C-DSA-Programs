@@ -39,18 +39,20 @@ markdown_extensions:
 plugins:
 - search
 - mkdocs-jupyter
-repo_url: https://github.com/SpreadSheets600/c-dsa-programs
+repo_url: https://github.com/SpreadSheets600/C-DSA-Programs
 repo_name: C-DSA-Programs
 nav:
-- Home:
-  - Home: README.md
-- 04-08-2025:
-  - 04-08-2025: 04-08-2025/README.md
-- 11-08-2025:
-  - 11-08-2025: 11-08-2025/README.md
-- 24-07-2025:
-  - 24-07-2025: 24-07-2025/README.md
-- Notes:
-  - AsymptoticNotation: Notes/AsymptoticNotation.md
-  - LinearSearch: Notes/LinearSearch.md
-  - Stack: Notes/Stack.md
+- .github:
+  - Home:
+    - Home: README.md
+- docs:
+  - 04-08-2025:
+    - 04-08-2025: 04-08-2025/README.md
+  - 11-08-2025:
+    - 11-08-2025: 11-08-2025/README.md
+  - 24-07-2025:
+    - 24-07-2025: 24-07-2025/README.md
+  - Notes:
+    - AsymptoticNotation: Notes/AsymptoticNotation.md
+    - LinearSearch: Notes/LinearSearch.md
+    - Stack: Notes/Stack.md
