@@ -4,3 +4,5 @@ mkdocs-awesome-pages-plugin
 mkdocs-simple-blog
 mkdocs-gitbook
 mkdocs-windmill
+mkdocs-toggle-sidebar-plugin
+mkdocs-awesome-nav
