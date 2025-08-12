@@ -9,29 +9,33 @@
       
       
       
-        <link rel="prev" href="../LinearSearch/">
+        <link rel="prev" href="AsymptoticNotation.html">
       
       
+        <link rel="next" href="Stack.html">
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>Stack - C DSA Programs</title>
+        <title>LinearSearch - C DSA Programs</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
 
     
     
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
       
     
     
@@ -44,7 +48,9 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -70,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stack" class="md-skip">
+        <a href="#linear-search" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="C DSA Programs" class="md-header__button md-logo" aria-label="C DSA Programs" data-md-component="logo">
+    <a href=".." title="C DSA Programs" class="md-header__button md-logo" aria-label="C DSA Programs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Stack
+              LinearSearch
             
           </span>
         </div>
@@ -224,7 +230,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="C DSA Programs" class="md-nav__button md-logo" aria-label="C DSA Programs" data-md-component="logo">
+    <a href=".." title="C DSA Programs" class="md-nav__button md-logo" aria-label="C DSA Programs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -301,12 +307,58 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LinkedList.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LinkedList
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    requirements
     
   </span>
   
@@ -378,12 +430,58 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04-08-2025/" class="md-nav__link">
+      <a href="../04-08-2025/index.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     04-08-2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-08-2025/GlobalStack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GlobalStack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-08-2025/LocalStack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LocalStack
     
   </span>
   
@@ -455,12 +553,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../11-08-2025/" class="md-nav__link">
+      <a href="../11-08-2025/index.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     11-08-2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-08-2025/StringOperations.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    StringOperations
     
   </span>
   
@@ -532,12 +653,81 @@
   
   
     <li class="md-nav__item">
-      <a href="../../24-07-2025/" class="md-nav__link">
+      <a href="../24-07-2025/index.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     24-07-2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-07-2025/DynamicLinearSearch.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DynamicLinearSearch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-07-2025/DynamicLinearSearchPointer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DynamicLinearSearchPointer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-07-2025/StaticLinearSearch.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    StaticLinearSearch
     
   </span>
   
@@ -609,35 +799,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../AsymptoticNotation/" class="md-nav__link">
+      <a href="AsymptoticNotation.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     AsymptoticNotation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../LinearSearch/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    LinearSearch
     
   </span>
   
@@ -669,7 +836,7 @@
   
   
   <span class="md-ellipsis">
-    Stack
+    LinearSearch
     
   </span>
   
@@ -677,12 +844,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="LinearSearch.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Stack
+    LinearSearch
     
   </span>
   
@@ -705,27 +872,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack-is-fist-in-first-out-lifo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Stack Is Fist In First Out ( LIFO )
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#visualization" class="md-nav__link">
     <span class="md-ellipsis">
       Visualization
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#operations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Operations
     </span>
   </a>
   
@@ -740,10 +889,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#space-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Space Complexity
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Stack.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stack
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -783,15 +964,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stack-is-fist-in-first-out-lifo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Stack Is Fist In First Out ( LIFO )
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#visualization" class="md-nav__link">
     <span class="md-ellipsis">
       Visualization
@@ -801,18 +973,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#operations" class="md-nav__link">
+  <a href="#time-complexity" class="md-nav__link">
     <span class="md-ellipsis">
-      Operations
+      Time Complexity
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#time-complexity" class="md-nav__link">
+  <a href="#space-complexity" class="md-nav__link">
     <span class="md-ellipsis">
-      Time Complexity
+      Space Complexity
     </span>
   </a>
   
@@ -837,58 +1009,54 @@
   
 
 
-<h1 id="stack">Stack</h1>
-<p>Stack is the linear data structure that follows the Last in, First Out(LIFO) principle of data insertion and deletion.
-It means that the element that is inserted last will be the first one to be removed and the element that is inserted first will be removed at last. Think of it as the stack of plates stacked on top of one another where we can only add or remove the top plate.</p>
-<h3 id="stack-is-fist-in-first-out-lifo">Stack Is Fist In First Out ( LIFO )</h3>
+<h1 id="linear-search">Linear Search</h1>
+<p>In Linear Search, we iterate over all the elements of the array and check if it the current element is equal to the target element.
+If we find any element to be equal to the target element, then return the index of the current element.
+Otherwise, if no element is equal to the target element, then return -1 as the element is not found. Linear search is also known as sequential search.</p>
 <h2 id="visualization">Visualization</h2>
-<p><img alt="Slide 2" src="../Images/Stack/image-1.png" />
-<img alt="Slide 3" src="../Images/Stack/image-2.png" /></p>
-<h2 id="operations">Operations</h2>
-<ul>
-<li><strong>Is Full</strong>: Check if the stack is full.</li>
-<li><strong>Is Empty</strong>: Check if the stack is empty.</li>
-<li><strong>Pop</strong>: Remove the top element from the stack.</li>
-<li><strong>Push</strong>: Add an element to the top of the stack.</li>
-<li><strong>Display</strong>: Display all the elements in the stack.</li>
-<li><strong>Peek</strong>: Get the top element of the stack without removing it.</li>
-</ul>
+<p><img alt="Slide 1" src="Images/LinearSearch/image.png" />
+<img alt="Slide 2" src="Images/LinearSearch/image-1.png" />
+<img alt="Slide 3" src="Images/LinearSearch/image-2.png" /></p>
 <h2 id="time-complexity">Time Complexity</h2>
 <table>
 <thead>
 <tr>
-<th>Operation</th>
+<th>Case</th>
 <th>Time Complexity</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Is Full</td>
+<td>Best Case</td>
 <td>O(1)</td>
 </tr>
 <tr>
-<td>Is Empty</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Pop</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Push</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Display</td>
+<td>Average Case</td>
 <td>O(n)</td>
 </tr>
 <tr>
-<td>Peek</td>
+<td>Worst Case</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<p>Where <em>n</em> is the number of elements in the array.</p>
+<h2 id="space-complexity">Space Complexity</h2>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Space Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All Cases</td>
 <td>O(1)</td>
 </tr>
 </tbody>
 </table>
-<p>Where <em>n</em> is the number of elements in the stack.</p>
+<p>Linear search uses a constant amount of extra space regardless of the input size.</p>
 
 
 
@@ -937,10 +1105,10 @@ It means that the element that is inserted last will be the first one to be remo
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.expand", "navigation.sections", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.expand", "navigation.sections", "navigation.path", "navigation.prune", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   </body>

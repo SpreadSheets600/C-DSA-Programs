@@ -1,0 +1,13 @@
+
+    .md-main__inner {
+        max-width: 2000px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .md-content {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        border-left: 1px solid rgb(64, 81, 181, 0.5) !important;
+        border-right: 1px solid rgba(64, 82, 181, 0.5) !important;
+    }
