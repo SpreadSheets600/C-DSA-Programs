@@ -220,7 +220,6 @@ def build_mkdocs(nav_entries):
             "search",
             "offline",
             "tags",
-            "table-reader",
             {"mkdocs-jupyter": {"include": ["*.ipynb"]}},
         ],
         "repo_url": "https://github.com/SpreadSheets600/C-DSA-Programs",
