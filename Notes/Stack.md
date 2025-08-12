@@ -3,12 +3,12 @@
 Stack is the linear data structure that follows the Last in, First Out(LIFO) principle of data insertion and deletion.
 It means that the element that is inserted last will be the first one to be removed and the element that is inserted first will be removed at last. Think of it as the stack of plates stacked on top of one another where we can only add or remove the top plate.
 
-### Stack Is Fist In First Out ( FIFO )
+### Stack Is Fist In First Out ( LIFO )
 
 ## Visualization
 
-![Slide 2](../.github/Stack/image-1.png)
-![Slide 3](../.github/Stack/image-2.png)
+![Slide 2](Images/Stack/image-1.png)
+![Slide 3](Images/Stack/image-2.png)
 
 ## Operations
 

@@ -6,9 +6,9 @@ Otherwise, if no element is equal to the target element, then return -1 as the e
 
 ## Visualization
 
-![Slide 1](../.github/LinearSearch/image.png)
-![Slide 2](../.github/LinearSearch/image-1.png)
-![Slide 3](../.github/LinearSearch/image-2.png)
+![Slide 1](Images/LinearSearch/image.png)
+![Slide 2](Images/LinearSearch/image-1.png)
+![Slide 3](Images/LinearSearch/image-2.png)
 
 ## Time Complexity
 

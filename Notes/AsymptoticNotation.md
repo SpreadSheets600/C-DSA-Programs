@@ -128,7 +128,7 @@ f(n) = ω(g(n))  means  f(n) grows faster than g(n), and ratio → ∞ as n → 
 
 ---
 
-![Growth Chart](../.github/AsymptoticNotation.png)
+![Growth Chart](Images/AsymptoticNotation.png)
 
 ---
 
