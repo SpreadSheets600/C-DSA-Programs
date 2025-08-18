@@ -137,7 +137,7 @@ int main()
 
             if (stringCompare(str1, str2))
             {
-                printf("The Stings Not Equal.\n");
+                printf("The Stings Are Equal.\n");
             }
             else
             {
