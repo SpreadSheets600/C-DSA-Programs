@@ -5,6 +5,7 @@
 - [July 24 - 2025 Programs](./24-07-2025/README.md) [ Linear Search ]
 - [August 08 - 2025 Programs](./04-08-2025/README.md) [ Stack Operations ]
 - [August 11 - 2025 Programs](./11-08-2025/README.md) [ String Operations ]
+- [August 18 - 2025 Programs](./18-08-2025/README.md) [ Linked List Operations ]
 
 ## Notes
 
