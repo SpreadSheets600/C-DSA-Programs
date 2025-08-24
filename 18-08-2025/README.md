@@ -5,10 +5,11 @@
 **Qestion:** Write a menu driven program to implement single linklist and write the following functions :
 
                 1. Append()
-
                 2. Display ()
 
-Note -  i. Data parts contain Roll,Name,Marks
+Note -  
+        
+        i. Data parts contain Roll,Name,Marks
         ii. Display those student names with marks >= 50
 
 **Sollution:** [View Code](StudentLinkedList.cpp)
