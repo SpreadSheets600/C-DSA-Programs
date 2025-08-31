@@ -293,6 +293,6 @@ Entered Array ~
 12 39 71 2 90 
 
 Sorted Array ~
-12 39 71 2 90 
+2 12 39 71 90
 
 ```
