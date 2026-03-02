@@ -2339,7 +2339,7 @@ An <strong>empty tree</strong> (root = <code>NULL</code>) is considered to have 
 <hr />
 <h3 id="1-maximum-nodes-at-a-given-level-l"><strong>1. Maximum Nodes at a Given Level <code>l</code></strong></h3>
 <ul>
-<li>A binary tree can have <strong>at most</strong> $2^l$ nodes at level <strong>l</strong>.</li>
+<li>A binary tree can have <strong>at most</strong> <span class="arithmatex">\(2^l\)</span> nodes at level <strong>l</strong>.</li>
 <li>
 <p><strong>Level Definition:</strong> The number of <strong>edges</strong> in the path from the root to a node.</p>
 </li>
@@ -2350,9 +2350,9 @@ An <strong>empty tree</strong> (root = <code>NULL</code>) is considered to have 
 </ul>
 <p><strong>Proof (by induction):</strong></p>
 <ol>
-<li><strong>Base Case:</strong> Level $l = 0$ → $2^0 = 1$ node (only the root).</li>
+<li><strong>Base Case:</strong> Level <span class="arithmatex">\(l = 0\)</span> → <span class="arithmatex">\(2^0 = 1\)</span> node (only the root).</li>
 <li><strong>Inductive Step:</strong>
-   If level <code>l</code> has $2^l$ nodes, then each node can have <strong>up to 2 children</strong>, making the next level:</li>
+   If level <code>l</code> has <span class="arithmatex">\(2^l\)</span> nodes, then each node can have <strong>up to 2 children</strong>, making the next level:</li>
 </ol>
 <p>$$
    2 \times 2^l = 2^{l+1}
@@ -2362,9 +2362,9 @@ An <strong>empty tree</strong> (root = <code>NULL</code>) is considered to have 
 <ul>
 <li>A binary tree of height <code>h</code> can have <strong>at most</strong>:</li>
 </ul>
-<p>$$
+<div class="arithmatex">\[
 \text{Max Nodes} = 2^{h+1} - 1
-$$</p>
+\]</div>
 <p><strong>Height Definition:</strong></p>
 <ul>
 <li>Height is the <strong>number of edges in the longest path</strong> from the root to a leaf.</li>
@@ -2373,9 +2373,9 @@ $$</p>
 </ul>
 <p><strong>Derivation:</strong>
 When all levels are completely filled:</p>
-<p>$$
+<div class="arithmatex">\[
 1 + 2 + 4 + \dots + 2^h = 2^{h+1} - 1
-$$</p>
+\]</div>
 <p><strong>Alternate Height Convention:</strong>
 Some books define height differently:</p>
 <ul>
@@ -2383,56 +2383,56 @@ Some books define height differently:</p>
 <li>Empty tree → height = 0
   Then, the formula becomes:</li>
 </ul>
-<p>$$
+<div class="arithmatex">\[
 \text{Max Nodes} = 2^h - 1
-$$</p>
+\]</div>
 <hr />
 <h3 id="3-minimum-height-for-n-nodes"><strong>3. Minimum Height for <code>N</code> Nodes</strong></h3>
 <ul>
 <li>The <strong>minimum possible height</strong> for <code>N</code> nodes:</li>
 </ul>
-<p>$$
+<div class="arithmatex">\[
 h_{\min} = \lfloor \log_2 N \rfloor
-$$</p>
+\]</div>
 <p><strong>Explanation:</strong>
 From the max nodes formula:</p>
-<p>$$
+<div class="arithmatex">\[
 N \le 2^{h+1} - 1
-$$</p>
+\]</div>
 <p>Rearranging:</p>
-<p>$$
+<div class="arithmatex">\[
 h \ge \log_2(N + 1) - 1
-$$</p>
+\]</div>
 <p>Taking the floor gives:</p>
-<p>$$
+<div class="arithmatex">\[
 h_{\min} = \lfloor \log_2 N \rfloor
-$$</p>
+\]</div>
 <hr />
 <h3 id="4-minimum-levels-for-l-leaves"><strong>4. Minimum Levels for <code>L</code> Leaves</strong></h3>
 <ul>
 <li>A binary tree with <code>L</code> leaves must have <strong>at least</strong>:</li>
 </ul>
-<p>$$
+<div class="arithmatex">\[
 l_{\min} = \lfloor \log_2 L \rfloor
-$$</p>
+\]</div>
 <p><strong>Reason:</strong></p>
 <ul>
 <li>Max leaves occur when the last level is completely filled.</li>
 <li>From Property 1:</li>
 </ul>
-<p>$$
+<div class="arithmatex">\[
 L \le 2^l
-$$</p>
+\]</div>
 <p>Solving for <code>l</code>:</p>
-<p>$$
+<div class="arithmatex">\[
 l_{\min} = \lfloor \log_2 L \rfloor
-$$</p>
+\]</div>
 <hr />
 <h3 id="5-relation-between-nodes-with-two-children-and-leaf-nodes"><strong>5. Relation Between Nodes with Two Children and Leaf Nodes</strong></h3>
 <p>In a <strong>full binary tree</strong> (every node has 0 or 2 children):</p>
-<p>$$
+<div class="arithmatex">\[
 L = T + 1
-$$</p>
+\]</div>
 <p>Where:</p>
 <ul>
 <li><code>L</code> = number of leaf nodes</li>
@@ -2454,17 +2454,17 @@ $$</p>
   T = (2^{h+1} - 1) - 2^h = 2^h - 1
   $$</p>
 <p>Thus:</p>
-<p>$$
+<div class="arithmatex">\[
 L = T + 1
-$$</p>
+\]</div>
 <hr />
 <h3 id="6-total-edges-in-a-binary-tree"><strong>6. Total Edges in a Binary Tree</strong></h3>
 <ul>
 <li>Any <strong>non-empty binary tree</strong> with <code>n</code> nodes has exactly:</li>
 </ul>
-<p>$$
+<div class="arithmatex">\[
 \text{Edges} = n - 1
-$$</p>
+\]</div>
 <p><strong>Reason:</strong></p>
 <ul>
 <li>Every node (except the root) has exactly one parent → one incoming edge.</li>
@@ -2538,9 +2538,11 @@ $$</p>
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+        <script src="../assets/mathjax-config.js"></script>
       
-        <script src="../assets/mermaid-init.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
       
     
   </body>
