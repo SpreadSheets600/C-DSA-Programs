@@ -12,9 +12,20 @@
 
 ## Notes
 
+- [Notes Index](./Notes/README.md)
+- [Sorting Notes](./Notes/Sorting/README.md)
+- [Linked List Notes](./Notes/LinkedLists/README.md)
+- [Stacks And Queues Notes](./Notes/StacksQueues/README.md)
+- [Tree Notes](./Notes/Trees/README.md)
+- [Graph Notes](./Notes/Graphs/README.md)
+
+## Legacy Notes
+
 - [Stack](./Notes/Stack.md)
 - [Linear Search](./Notes/LinearSearch.md)
 - [Asymptotic Notation](./Notes/AsymptoticNotation.md)
+- [Bubble Sort](./Notes/BubbleSort.md)
+- [Trees](./Notes/Trees.md)
 
 ## Resouces
 

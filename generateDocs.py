@@ -9,6 +9,7 @@ MKDOCS_FILE = "mkdocs.yml"
 OVERRIDES_DIR = "overrides"
 ASSETS_DIR = os.path.join(DOCS_DIR, "assets")
 CUSTOM_CSS = os.path.join(ASSETS_DIR, "extra.css")
+MERMAID_INIT_JS = os.path.join(ASSETS_DIR, "mermaid-init.js")
 
 ALLOWED_EXT = (
     ".md",
@@ -24,6 +25,7 @@ ALLOWED_EXT = (
     ".hpp",
     ".txt",
     ".css",
+    ".js",
 )
 
 CODE_WRAP_EXTS = (".cpp", ".c", ".h", ".hpp", ".py")
@@ -89,6 +91,31 @@ def ensure_custom_css():
 """
         with open(CUSTOM_CSS, "w", encoding="utf-8") as f:
             f.write(css_content)
+
+
+def ensure_mermaid_init_js():
+    os.makedirs(ASSETS_DIR, exist_ok=True)
+
+    js_content = """
+document$.subscribe(function () {
+    if (typeof mermaid === "undefined") {
+        return;
+    }
+
+    mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "loose",
+        theme: document.body.getAttribute("data-md-color-scheme") === "slate" ? "dark" : "default"
+    });
+
+    mermaid.run({
+        querySelector: ".mermaid"
+    });
+});
+"""
+
+    with open(MERMAID_INIT_JS, "w", encoding="utf-8") as f:
+        f.write(js_content)
 
 
 def ensure_mkdocs_extra_css():
@@ -213,9 +240,23 @@ def build_mkdocs(nav_entries):
                     "use_pygments": True,
                 }
             },
-            "pymdownx.superfences",
+            {
+                "pymdownx.superfences": {
+                    "custom_fences": [
+                        {
+                            "name": "mermaid",
+                            "class": "mermaid",
+                            "format": "__MERMAID_FENCE_FORMAT__",
+                        }
+                    ]
+                }
+            },
         ],
         "extra_css": [f"assets/{os.path.basename(CUSTOM_CSS)}"],
+        "extra_javascript": [
+            "https://unpkg.com/mermaid@10/dist/mermaid.min.js",
+            f"assets/{os.path.basename(MERMAID_INIT_JS)}",
+        ],
         "plugins": [
             "search",
             "offline",
@@ -231,12 +272,19 @@ def build_mkdocs(nav_entries):
 if __name__ == "__main__":
     copy_docs()
     ensure_custom_css()
+    ensure_mermaid_init_js()
     ensure_mkdocs_extra_css()
 
     nav = scan_dir(DOCS_DIR)
     config = build_mkdocs(nav)
 
+    rendered_config = yaml.dump(config, sort_keys=False)
+    rendered_config = rendered_config.replace(
+        "'__MERMAID_FENCE_FORMAT__'",
+        "!!python/name:pymdownx.superfences.fence_code_format",
+    )
+
     with open(MKDOCS_FILE, "w", encoding="utf-8") as f:
-        yaml.dump(config, f, sort_keys=False)
+        f.write(rendered_config)
 
     print("✅ MkDocs configuration generated successfully with custom CSS support!")

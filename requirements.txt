@@ -6,3 +6,5 @@ mkdocs-gitbook
 mkdocs-windmill
 mkdocs-toggle-sidebar-plugin
 mkdocs-awesome-nav
+PyYAML
+pymdown-extensions
