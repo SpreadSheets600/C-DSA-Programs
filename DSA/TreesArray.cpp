@@ -108,12 +108,12 @@ int main()
     insert(50);
 
     printTree();
-    
+
     int index = 2;
     printf("Parent Of %d : %d\n", tree[index], getParentValue(index));
     printf("Left Child Of %d : %d\n", tree[index], getLeftChildValue(index));
     printf("Right Child Of %d : %d\n\n", tree[index], getRightChildValue(index));
-    
+
     printf("Value At Index 3 : %d\n", getValueAtIndex(3));
     printf("Height Of Tree : %d\n\n", getHeight());
 
