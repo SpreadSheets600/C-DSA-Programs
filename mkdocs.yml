@@ -30,6 +30,8 @@ markdown_extensions:
 - footnotes
 - tables
 - toc
+- pymdownx.arithmatex:
+    generic: true
 - pymdownx.highlight:
     anchor_linenums: true
     linenums: true
@@ -43,8 +45,9 @@ markdown_extensions:
 extra_css:
 - assets/extra.css
 extra_javascript:
+- assets/mathjax-config.js
+- https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 - https://unpkg.com/mermaid@10/dist/mermaid.min.js
-- assets/mermaid-init.js
 plugins:
 - search
 - offline

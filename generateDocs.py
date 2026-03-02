@@ -9,7 +9,7 @@ MKDOCS_FILE = "mkdocs.yml"
 OVERRIDES_DIR = "overrides"
 ASSETS_DIR = os.path.join(DOCS_DIR, "assets")
 CUSTOM_CSS = os.path.join(ASSETS_DIR, "extra.css")
-MERMAID_INIT_JS = os.path.join(ASSETS_DIR, "mermaid-init.js")
+MATHJAX_CONFIG_JS = os.path.join(ASSETS_DIR, "mathjax-config.js")
 
 ALLOWED_EXT = (
     ".md",
@@ -93,28 +93,25 @@ def ensure_custom_css():
             f.write(css_content)
 
 
-def ensure_mermaid_init_js():
+def ensure_mathjax_config_js():
     os.makedirs(ASSETS_DIR, exist_ok=True)
 
-    js_content = """
-document$.subscribe(function () {
-    if (typeof mermaid === "undefined") {
-        return;
+    js_content = r"""
+window.MathJax = {
+    tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    options: {
+        ignoreHtmlClass: '.*|',
+        processHtmlClass: 'arithmatex'
     }
-
-    mermaid.initialize({
-        startOnLoad: false,
-        securityLevel: "loose",
-        theme: document.body.getAttribute("data-md-color-scheme") === "slate" ? "dark" : "default"
-    });
-
-    mermaid.run({
-        querySelector: ".mermaid"
-    });
-});
+};
 """
 
-    with open(MERMAID_INIT_JS, "w", encoding="utf-8") as f:
+    with open(MATHJAX_CONFIG_JS, "w", encoding="utf-8") as f:
         f.write(js_content)
 
 
@@ -212,6 +209,11 @@ def build_mkdocs(nav_entries):
             "tables",
             "toc",
             {
+                "pymdownx.arithmatex": {
+                    "generic": True,
+                }
+            },
+            {
                 "pymdownx.highlight": {
                     "anchor_linenums": True,
                     "linenums": True,
@@ -233,8 +235,9 @@ def build_mkdocs(nav_entries):
         ],
         "extra_css": [f"assets/{os.path.basename(CUSTOM_CSS)}"],
         "extra_javascript": [
+            f"assets/{os.path.basename(MATHJAX_CONFIG_JS)}",
+            "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",
             "https://unpkg.com/mermaid@10/dist/mermaid.min.js",
-            f"assets/{os.path.basename(MERMAID_INIT_JS)}",
         ],
         "plugins": [
             "search",
@@ -251,7 +254,7 @@ def build_mkdocs(nav_entries):
 if __name__ == "__main__":
     copy_docs()
     ensure_custom_css()
-    ensure_mermaid_init_js()
+    ensure_mathjax_config_js()
 
     nav = scan_dir(DOCS_DIR)
     config = build_mkdocs(nav)
