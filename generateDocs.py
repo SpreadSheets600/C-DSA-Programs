@@ -118,27 +118,6 @@ document$.subscribe(function () {
         f.write(js_content)
 
 
-def ensure_mkdocs_extra_css():
-    if not os.path.exists(MKDOCS_FILE):
-        print(f"⚠ {MKDOCS_FILE} Not Found!")
-        return
-
-    with open(MKDOCS_FILE, encoding="utf-8") as f:
-        config = yaml.safe_load(f) or {}
-
-    extra_css_list = config.get("extra_css", [])
-
-    css_path = f"assets/{os.path.basename(CUSTOM_CSS)}"
-    if css_path not in extra_css_list:
-        extra_css_list.append(css_path)
-        config["extra_css"] = extra_css_list
-
-        with open(MKDOCS_FILE, "w", encoding="utf-8") as f:
-            yaml.dump(config, f, sort_keys=False)
-
-        print(f"✅ Added {css_path} to {MKDOCS_FILE}")
-
-
 def scan_dir(base_dir):
     md_ext = (".md", ".ipynb")
 
@@ -273,7 +252,6 @@ if __name__ == "__main__":
     copy_docs()
     ensure_custom_css()
     ensure_mermaid_init_js()
-    ensure_mkdocs_extra_css()
 
     nav = scan_dir(DOCS_DIR)
     config = build_mkdocs(nav)
