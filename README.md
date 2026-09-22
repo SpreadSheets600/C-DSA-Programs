@@ -9,6 +9,8 @@
 - [August 25 - 2025 Programs](./25-08-2025/README.md) [ Binary Search & Selection Sort ]
 - [September 01 - 2025 Programs](./01-09-2025/README.md) [ Linked List Operations - Insert And Delete ]
 - [IDK The Date](./03-11-2025/README.md) [ Linked List Operations - Insert And Delete ]
+- [DSA Programs](./DSA/README.md)
+- [Practice Programs](./Practice/README.md)
 
 ## Notes
 

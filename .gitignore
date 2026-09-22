@@ -77,3 +77,10 @@ dkms.conf
 # Executables
 
 # End of https://www.toptal.com/developers/gitignore/api/c,c++
+
+# Markdown Archive Engine (site generator, fetched at build time)
+.engine/
+engine/
+dist/
+.astro/
+node_modules/

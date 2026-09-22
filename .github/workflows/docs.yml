@@ -1,0 +1,63 @@
+name: Build and publish docs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs-site
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out content (this repository)
+        uses: actions/checkout@v4
+
+      # Pin to a tag (e.g. v1) once you want to freeze the engine.
+      - name: Check out the site engine
+        uses: actions/checkout@v4
+        with:
+          repository: SpreadSheets600/markdown-archive-engine
+          ref: main
+          path: engine
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
+
+      - name: Point the engine at the content root
+        run: |
+          {
+            echo "dir=.."
+            echo "base=/${GITHUB_REPOSITORY##*/}"
+            echo "url=https://${GITHUB_REPOSITORY_OWNER}.github.io"
+          } > engine/.contentdir
+
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm ci
+
+      - name: Build the site (Astro + Pagefind)
+        working-directory: engine
+        env:
+          SITE_BASE: /${{ github.event.repository.name }}
+          SITE_URL: https://${{ github.event.repository_owner }}.github.io
+        run: npm run build
+
+      - name: Publish the generated site branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./engine/dist
+          force_orphan: true
+          commit_message: "docs: publish ${{ github.sha }}"
