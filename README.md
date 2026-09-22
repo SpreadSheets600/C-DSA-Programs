@@ -2,24 +2,24 @@
 
 ## Contents
 
-- [July 24 - 2025 Programs](./24-07-2025/README.md) [ Linear Search ]
-- [August 08 - 2025 Programs](./04-08-2025/README.md) [ Stack Operations ]
-- [August 11 - 2025 Programs](./11-08-2025/README.md) [ String Operations ]
-- [August 18 - 2025 Programs](./18-08-2025/README.md) [ Linked List Operations ]
-- [August 25 - 2025 Programs](./25-08-2025/README.md) [ Binary Search & Selection Sort ]
-- [September 01 - 2025 Programs](./01-09-2025/README.md) [ Linked List Operations - Insert And Delete ]
-- [IDK The Date](./03-11-2025/README.md) [ Linked List Operations - Insert And Delete ]
-- [DSA Programs](./DSA/README.md)
-- [Practice Programs](./Practice/README.md)
+- [July 24 - 2025 Programs](./24-07-2025/) [ Linear Search ]
+- [August 08 - 2025 Programs](./04-08-2025/) [ Stack Operations ]
+- [August 11 - 2025 Programs](./11-08-2025/) [ String Operations ]
+- [August 18 - 2025 Programs](./18-08-2025/) [ Linked List Operations ]
+- [August 25 - 2025 Programs](./25-08-2025/) [ Binary Search & Selection Sort ]
+- [September 01 - 2025 Programs](./01-09-2025/) [ Linked List Operations - Insert And Delete ]
+- [IDK The Date](./03-11-2025/) [ Linked List Operations - Insert And Delete ]
+- [DSA Programs](./DSA/)
+- [Practice Programs](./Practice/)
 
 ## Notes
 
-- [Notes Index](./Notes/README.md)
-- [Sorting Notes](./Notes/Sorting/README.md)
-- [Linked List Notes](./Notes/LinkedLists/README.md)
-- [Stacks And Queues Notes](./Notes/StacksQueues/README.md)
-- [Tree Notes](./Notes/Trees/README.md)
-- [Graph Notes](./Notes/Graphs/README.md)
+- [Notes Index](./Notes/)
+- [Sorting Notes](./Notes/Sorting/)
+- [Linked List Notes](./Notes/LinkedLists/)
+- [Stacks And Queues Notes](./Notes/StacksQueues/)
+- [Tree Notes](./Notes/Trees/)
+- [Graph Notes](./Notes/Graphs/)
 
 ## Legacy Notes
 
